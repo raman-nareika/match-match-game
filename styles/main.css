@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(../images/noise-bg.png) repeat;
+}
+
+.playing-field {
+    margin: 5%;
+    padding: 3%;
+    height: 100%;
+    background: -moz-linear-gradient(225deg, #FFFFFF 0%, #008080 100%); /* ff3.6+ */
+    background: -webkit-linear-gradient(225deg, #FFFFFF 0%, #008080 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(225deg, #FFFFFF 0%, #008080 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(225deg, #FFFFFF 0%, #008080 100%); /* ie10+ */
+}
+
+.rules {
+    float: left;
+}
+
+.personal-information {
+    padding: 0 25%;
+}
+
+.personal-information div {
+    float: left;
+}
+
+.settings {
+    padding: 0 40%;
+}
+
+.rules ul {
+    text-align: left;
+    line-height: 1.2;
+}
+
+.start-cards,
+.game-difficulty {
+    padding: 10px 20px;
+    float: left;
+}
+
+.start-cards img {
+    display: block;
+    height: 64px;
+    width: auto;
+    margin: 5px auto;
+    cursor: pointer;
+}
+
+.new-game {
+    padding: 5px 15px;
+}

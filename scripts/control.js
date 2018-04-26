@@ -10,14 +10,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
     document.body.addEventListener('click', function(event) {
-        if (event.srcElement.getAttribute("name") !== null && 
-            event.srcElement.getAttribute("name").startsWith("card-container-")) {
+        if (event.srcElement.id !== null && event.srcElement.id.startsWith("card-")) {
             event.srcElement.parentElement.classList.toggle('flipped');
-            selectedCards.push(event.srcElement.parentElement.className);
+            selectedCards.push(event.srcElement.parentElement.id);
 
-            if (game.select(event.srcElement.getAttribute("name")) === false) {
-                document.getElementsByClassName(`${selectedCards.pop()}`)[0].classList.toggle('flipped');
-                setTimeout(document.getElementsByClassName(`${selectedCards.pop()}`)[0].classList.toggle('flipped'), 1000);
+            if (game.select(event.srcElement.id) === false) {
+                document.getElementById(`${selectedCards.pop()}`).classList.toggle('flipped');
+                setTimeout(document.getElementById(`${selectedCards.pop()}`).classList.toggle('flipped'), 1000);
             }
         };
     });

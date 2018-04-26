@@ -30,28 +30,35 @@ class Game {
     initCards(diff) {
         let col = diff[0];
         let row = diff[1];
-        let cards = new Array(col*row / 2).fill(0);
-        cards = cards.map((v, i) => v = i);
+        let cards = new Array(col * row).fill(0);
+        cards = cards.map(function(v, i) {
+            return {
+                    id: i + 1,
+                    value: i % ((col * row) / 2) + 2,
+                    guessed: false
+                }
+        });
         
-        return cards.concat(cards);
+        return cards;
     }
 
     drawCards(difficulty) {
         let field = document.getElementsByClassName(this._playing_field_selector)[0];
 
         this._cards.forEach(el => { 
-            const card = document.createElement("div");
+            const cardContainer = document.createElement("div");
             const front = document.createElement("figure");
             const back = document.createElement("figure");
 
-            card.className = `card card-container-${el}`;
+            cardContainer.className = `card-container`;
+            cardContainer.id = `card-${el.id}`;
             front.className = `${this._skin_class}`;
-            front.setAttribute("name",`card-container-${el}`);
+            front.id = `card-${el.id}`;
             back.className = "back";
-            back.innerHTML = el;
-            card.appendChild(front);
-            card.appendChild(back);
-            this.gameField.appendChild(card);
+            back.innerHTML = el.value;
+            cardContainer.appendChild(front);
+            cardContainer.appendChild(back);
+            this.gameField.appendChild(cardContainer);
         });
     }
 
@@ -62,9 +69,9 @@ class Game {
         }
     }
 
-    select(id) {
-        //const id = cardId.match(/\d+/i);
-        this._selectedCards.push(id);
+    select(cardId) {
+        const id = parseInt(cardId.match(/\d+/i)[0]);
+        this._selectedCards.push(this._cards.find(el => el.id === id).value);
 
         if (this._selectedCards.length === 2)
             return this._selectedCards.pop() === this._selectedCards.pop();

@@ -5,7 +5,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     document.getElementsByClassName("new-game")[0].addEventListener("click", () => {
         const skin = document.querySelector('[name="card-skin"]:checked:first-of-type').value;
         const difficulty = document.querySelector('[name="difficulty"]:checked:first-of-type').value.split(",");
-        game = new Game(skin, difficulty);
+        const firstName = "";
+        const lastName = "";
+
+        game = new Game(skin, difficulty, firstName, lastName);
         game.start()
     });
 
@@ -16,8 +19,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
             if (game.select(event.srcElement.id) === false) {
                 document.getElementById(`${selectedCards.pop()}`).classList.toggle('flipped');
-                setTimeout(document.getElementById(`${selectedCards.pop()}`).classList.toggle('flipped'), 1000);
+                setTimeout(document.getElementById(`${selectedCards.pop()}`).classList.toggle('flipped'), 10000);
             }
-        };
+        }
+        
+        if (game.gameIsFinished) {
+            game.saveResult();
+            game.congratulate();
+        }
     });
 });

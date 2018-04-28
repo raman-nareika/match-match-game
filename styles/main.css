@@ -49,15 +49,18 @@ input {
     background: -ms-linear-gradient(225deg, #FFFFFF 0%, #008080 100%); /* ie10+ */
 }
 
-.rules {
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     flex-grow: 1;
 }
 
-.form {
+.options {
     flex-grow: 2;
 }
 
-.form form {
+.options form {
     display: flex;
     flex-direction: column;
 }

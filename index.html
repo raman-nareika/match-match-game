@@ -3,27 +3,37 @@
     <head>
         <link rel="stylesheet" href="styles/main.css" />
         <link rel="stylesheet" href="styles/cards.css" />
-        <script src="scripts/match-match-game.js"></script>
-        <script src="scripts/game.js"></script>
-        <script src="scripts/control.js"></script>
+        <script src="scripts/start.js"></script>
     </head>
     <body>
         <div class="playing-field">
-            <div class="rules">
-                <h3>How to play:</h3>
-                <p>Memory is a counter game where the objects is to find pairs.</p>
-                <p>When the game begins, all pictures are hidden</p>
-                <h3>To play:</h3>
-                <ol>
-                    <li>Select two cards to try match the pictures</li>
-                    <li>If you match the pictures you can go again</li>
-                    <li>If they don't match it the computer turn them</li>
-                    <li>The player that finds all pairs wins!</li>
-                    <li>Have Fun!</li>
-                </ol>
+            <div class="info">
+                <div class="rules">
+                    <h3>How to play:</h3>
+                    <p>Memory is a counter game where the objects is to find pairs.</p>
+                    <p>When the game begins, all pictures are hidden</p>
+                    <h3>To play:</h3>
+                    <ol>
+                        <li>Select two cards to try match the pictures</li>
+                        <li>If you match the pictures you can go again</li>
+                        <li>If they don't match it the computer turn them</li>
+                        <li>The player that finds all pairs wins!</li>
+                        <li>Have Fun!</li>
+                    </ol>
+                </div>
+                <div class"top-10">
+                    <table>
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="form">
-                <form action="/" method="POST" name="form" onsubmit="return validateForm(this);">
+            <div class="options">
+                <form action="./game.html" method="POST" onsubmit="validateForm(this)">
                     <div class="personal-information">
                         <div>
                             <label>First Name</label>                    

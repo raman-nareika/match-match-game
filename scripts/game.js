@@ -1,12 +1,13 @@
 class Game {
-    constructor(skin, difficulty, firstName, lastName) {
+    constructor(firstName, lastName, email, skin, difficulty) {
+        this._firstName = firstName;
+        this._lastName = lastName;
+        this._email = email;
         this._skin_class = skin;
         this._difficulty = difficulty
         this._cards = this.generateCards(this._difficulty);
         this._selectedCards = [];
         this._playing_field_selector = "playing-field";
-        this._firstName = firstName;
-        this._lastName = lastName;
     }
     
     start() {
@@ -34,7 +35,7 @@ class Game {
 
     initCards(diff) {
         let col = diff[0];
-        let row = diff[1];
+        let row = diff[2];
         let cards = new Array(col * row).fill(0);
         cards = cards.map(function(v, i) {
             return {
@@ -97,16 +98,21 @@ class Game {
     }
 
     saveResult() {
+        let res;
         const result = {
-            firstName: this.firstName,
-            lastName: this.lastName,
+            firstName: this._firstName,
+            lastName: this._lastName,
+            email: this._email,
             score: 0,
             date: new Date().toGMTString()
         };
-        const res = window.localStorage['results'] || [];
-        console.log(res);
+        
+        if (window.localStorage['results']) {
+            res = JSON.parse(window.localStorage['results'])
+        } else {
+            res = [];
+        }
         res.push(result);
-        console.log(res);
-        window.localStorage['results'] = res;
+        window.localStorage['results'] = JSON.stringify(res);
     }
 }

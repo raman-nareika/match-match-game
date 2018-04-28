@@ -1,7 +1,18 @@
+const validateForm = function(form) {
+    const inputs = [...form.elements].filter(x => x.nodeName === "INPUT");
+    const errors = inputs.filter(x => !x.value).map(x => x.name);
+
+    if (errors.length === 0) {
+        form.submit();
+    } else {
+
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function(event) { 
     let game;
     const selectedCards = [];
-
+/*
     document.getElementsByClassName("new-game")[0].addEventListener("click", () => {
         const skin = document.querySelector('[name="card-skin"]:checked:first-of-type').value;
         const difficulty = document.querySelector('[name="difficulty"]:checked:first-of-type').value.split(",");
@@ -27,5 +38,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
             game.saveResult();
             game.congratulate();
         }
-    });
+    });*/
 });

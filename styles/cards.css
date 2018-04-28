@@ -1,6 +1,6 @@
 div.card-container {
     float: left;
-    width: 100px;
+    min-width: 100px;
     height: 150px;
     margin: 10px;
     perspective: 800px;

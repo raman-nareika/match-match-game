@@ -6,7 +6,6 @@ class Game {
         this._skin_class = skin;
         this._difficulty = difficulty
         this._cards = this.generateCards(this._difficulty);
-        this._selectedCards = [];
         this._playing_field_selector = "playing-field";
     }
     
@@ -54,7 +53,7 @@ class Game {
             const back = document.createElement("figure");
 
             cardContainer.className = `card-container`;
-            cardContainer.id = `card-${el.id}`;
+            cardContainer.id = `card-container-${el.id}`;
             front.className = `${this._skin_class}`;
             front.id = `card-${el.id}`;
             back.className = "back";
@@ -72,21 +71,19 @@ class Game {
         }
     }
 
-    select(cardId) {
-        const id = parseInt(cardId.match(/\d+/i)[0]);
-        this._selectedCards.push(this._cards.findIndex(el => el.id === id));
-
-        if (this._selectedCards.length === 2) {
-            const aIndex = this._selectedCards.pop()
-            const bIndex = this._selectedCards.pop()
-            
-            if (this._cards[aIndex].value === this._cards[bIndex].value) {
-                this._cards[aIndex].guessed = true;
-                this._cards[bIndex].guessed = true;
-                return true;
-            }
-            return false;
+    areEqual(cardId1, cardId2) {
+        const id1 = parseInt(cardId1.match(/\d+/i)[0]);
+        const id2 = parseInt(cardId2.match(/\d+/i)[0]);
+        const selectedCards = [];
+        const aIndex = this._cards.findIndex(el => el.id === id1);
+        const bIndex = this._cards.findIndex(el => el.id === id2);
+        
+        if (this._cards[aIndex].value === this._cards[bIndex].value) {
+            this._cards[aIndex].guessed = true;
+            this._cards[bIndex].guessed = true;
+            return true;
         }
+        return false;
     }
 
     congratulate() {

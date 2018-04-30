@@ -5,13 +5,17 @@ window.onload = () => {
     game.start();
     
     document.body.addEventListener('click', function(event) {
-        if (event.srcElement.id !== null && event.srcElement.id.startsWith("card-")) {
+        if (event.srcElement.id !== null && event.srcElement.id.startsWith("card-") && selectedCards.length !== 2) {
             event.srcElement.parentElement.classList.toggle('flipped');
             selectedCards.push(event.srcElement.parentElement.id);
 
-            if (game.select(event.srcElement.id) === false) {
-                document.getElementById(`${selectedCards.pop()}`).classList.toggle('flipped');
-                document.getElementById(`${selectedCards.pop()}`).classList.toggle('flipped');
+            if (selectedCards.length === 2) {
+                if (!game.areEqual(selectedCards[0], selectedCards[1])) {
+                    setTimeout(function() { flip(`${selectedCards.pop()}`) }, 1000);
+                    setTimeout(function() { flip(`${selectedCards.pop()}`) }, 1000);   
+                } else {
+                    selectedCards.splice(0, 2);
+                }
             }
         }
         
@@ -21,3 +25,7 @@ window.onload = () => {
         }
     });
 };
+
+const flip = function(cardId) {
+    document.getElementById(cardId).classList.toggle('flipped');
+}

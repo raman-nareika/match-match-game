@@ -5,7 +5,7 @@ div.card-container {
     margin: 10px;
     perspective: 800px;
     transform-style: preserve-3d;
-    transition: transform 1s;
+    transition: transform 2s;
 }
 
 div.card-container figure {

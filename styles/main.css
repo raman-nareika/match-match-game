@@ -20,6 +20,12 @@ body {
 
 h3 {
     font-size: 1.75rem;
+    padding: .75rem 0;
+}
+
+.rules h3~h3,
+.top-10 {
+    margin-top: 2rem
 }
 
 input {
@@ -49,10 +55,15 @@ input {
     background: -ms-linear-gradient(225deg, #FFFFFF 0%, #008080 100%); /* ie10+ */
 }
 
+.info,
+.options {
+    padding: 0 1rem;
+}
+
 .info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-grow: 1;
 }
 
@@ -100,4 +111,15 @@ fieldset div {
     border: 1px solid transparent;
     padding: .5rem 1rem;
     cursor: pointer;
+}
+
+table thead th {
+    vertical-align: middle;
+}
+
+table th, 
+table td {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
 }

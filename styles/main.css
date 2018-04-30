@@ -55,20 +55,17 @@ input {
     background: -ms-linear-gradient(225deg, #FFFFFF 0%, #008080 100%); /* ie10+ */
 }
 
-.info,
-.options {
-    padding: 0 1rem;
-}
-
 .info {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     flex-grow: 1;
+    padding-right: 1rem;
 }
 
 .options {
     flex-grow: 2;
+    padding-left: 1rem;
 }
 
 .options form {

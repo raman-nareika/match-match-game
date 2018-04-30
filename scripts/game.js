@@ -10,8 +10,14 @@ class Game {
     }
     
     start() {
-        this.clear();
         this.drawCards();
+        this.startTimer();
+    }
+
+    finish() {
+        clearInterval(this._timer);
+        this.saveResult();
+        this.congratulate();
     }
 
     clear() {
@@ -100,8 +106,8 @@ class Game {
             firstName: this._firstName,
             lastName: this._lastName,
             email: this._email,
-            score: 0,
-            date: new Date().toGMTString()
+            score: this.score,
+            date: new Date().toLocaleString()
         };
         
         if (window.localStorage['results']) {
@@ -111,5 +117,21 @@ class Game {
         }
         res.push(result);
         window.localStorage['results'] = JSON.stringify(res);
+    }
+
+    startTimer() {
+        let start = Date.now();
+        let diff = 0;
+        let $this = this;
+
+        const timer = function() {
+            diff = ((Date.now() - start) / 1000 | 0);
+            let minutes = (diff / 60) | 0;
+            let seconds = (diff % 60) | 0;
+            $this.score = `${minutes}:${seconds}`;
+            document.getElementsByClassName("timer")[0].textContent = $this.score;
+        }
+        timer();
+        $this._timer = setInterval(timer, 1000);
     }
 }

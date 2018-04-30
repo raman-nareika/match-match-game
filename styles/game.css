@@ -1,0 +1,9 @@
+.playing-field {
+    position: relative;
+}
+.timer {
+    position: absolute;
+    top: 0;
+    right: 2rem;
+    font-size: 1.5rem;
+}

@@ -20,8 +20,7 @@ window.onload = () => {
         }
         
         if (game.gameIsFinished) {
-            game.saveResult();
-            game.congratulate();
+            game.finish();
         }
     });
 };
